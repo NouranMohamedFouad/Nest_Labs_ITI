@@ -1,15 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodoModule } from './todo/todo.module';
+import { TodoModule } from './Todo/todo.module';
 import { LoggerMiddleware } from './Middlewares/logger.middleware';
-import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/todo-app'),
-    TodoModule,
-  ],
+  imports: [TodoModule],
   controllers: [AppController],
   providers: [AppService],
 })
